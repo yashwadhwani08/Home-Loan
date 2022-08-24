@@ -1,5 +1,8 @@
 package com.barclays.homeLoanApplication.entity;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -28,18 +31,53 @@ public class LoanApplication {
     private String loanStatus;
 
     public LoanApplication() {
+    	super();
     }
+    
+    @Column
+	private int month;
+    
+    public int getMonth() {
+		return month;
+	}
 
-    public LoanApplication(String homeAddress, double loanAmount, long loanTenure, long applicantMonthlySalary, String applicantEmail, String loanStatus) {
-        this.homeAddress = homeAddress;
-        this.loanAmount = loanAmount;
-        this.loanTenure = loanTenure;
-        this.applicantMonthlySalary = applicantMonthlySalary;
-        this.applicantEmail = applicantEmail;
-        this.loanStatus = loanStatus;
-    }
+	public void setMonth(int month) {
+		this.month = month;
+	}
+    
+    @Temporal(TemporalType.DATE)
+	@Column(nullable = false)
+	private Date timestamp;
 
-    public long getLoanApplicationId() {
+	@PrePersist
+	private void onCreate() {
+	    timestamp = new Date();
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTime(timestamp);
+	    int month = calendar.get(Calendar.MONTH);
+	    month++;
+	    System.out.println(month);
+	    setMonth(month);
+	   }
+
+
+    
+
+    public LoanApplication(long loanApplicationId, String homeAddress, double loanAmount, long loanTenure,
+			long applicantMonthlySalary, String applicantEmail, String loanStatus, int month, Date timestamp) {
+		super();
+		this.loanApplicationId = loanApplicationId;
+		this.homeAddress = homeAddress;
+		this.loanAmount = loanAmount;
+		this.loanTenure = loanTenure;
+		this.applicantMonthlySalary = applicantMonthlySalary;
+		this.applicantEmail = applicantEmail;
+		this.loanStatus = loanStatus;
+		this.month = month;
+		this.timestamp = timestamp;
+	}
+
+	public long getLoanApplicationId() {
         return loanApplicationId;
     }
 
