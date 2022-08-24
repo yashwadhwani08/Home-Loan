@@ -96,6 +96,23 @@ public class LoanRepaymentSchedule {
 		return paid;
 	}
 
+	public LoanRepaymentSchedule() {
+		super();
+	}
+
+	public LoanRepaymentSchedule(int paymentid, int loanid, String date, double emi, double principal, double interest,
+			double outstanding, String paid) {
+		super();
+		this.paymentid = paymentid;
+		this.loanid = loanid;
+		this.date = date;
+		this.emi = emi;
+		this.principal = principal;
+		this.interest = interest;
+		this.outstanding = outstanding;
+		this.paid = paid;
+	}
+
 	public void setPaid(String paid) {
 		this.paid = paid;
 	}
