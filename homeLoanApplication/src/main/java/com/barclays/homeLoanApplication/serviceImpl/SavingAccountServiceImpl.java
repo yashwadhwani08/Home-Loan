@@ -4,9 +4,11 @@ import com.barclays.homeLoanApplication.entity.SavingAccount;
 import com.barclays.homeLoanApplication.repository.SavingAccountRepository;
 import com.barclays.homeLoanApplication.service.SavingAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SavingAccountServiceImpl implements SavingAccountService {
     @Autowired
     private SavingAccountRepository savingAccountRepository;
