@@ -5,9 +5,11 @@ import com.barclays.homeLoanApplication.entity.LoanApplication;
 import com.barclays.homeLoanApplication.repository.LoanApplicationRepository;
 import com.barclays.homeLoanApplication.service.LoanApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LoanApplicationServiceImpl implements LoanApplicationService {
 
     @Autowired
