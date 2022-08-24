@@ -105,7 +105,19 @@ public class LoanApplication {
         this.loanTenure = loanTenure;
     }
 
-    public long getApplicantMonthlySalary() {
+    public Date getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public void setLoanApplicationId(long loanApplicationId) {
+		this.loanApplicationId = loanApplicationId;
+	}
+
+	public long getApplicantMonthlySalary() {
         return applicantMonthlySalary;
     }
 
