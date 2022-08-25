@@ -1,10 +1,11 @@
 package com.barclays.homeLoanApplication.params;
 
+import com.barclays.homeLoanApplication.constants.LoanApplicationConstants;
+
 public class LoanParams {
 	int loanid;
 	double amount;
 	int month;
-	double rate;
 	
 	public int getLoanid() {
 		return loanid;
@@ -25,17 +26,13 @@ public class LoanParams {
 		this.month = month;
 	}
 	public double getRate() {
-		return rate;
+		return LoanApplicationConstants.RATE_OF_INTEREST;
 	}
 	public LoanParams(int loanid, double amount, int month, double rate) {
 		super();
 		this.loanid = loanid;
 		this.amount = amount;
 		this.month = month;
-		this.rate = rate;
-	}
-	public void setRate(double rate) {
-		this.rate = rate;
 	}
 	public LoanParams() {
 		super();

@@ -28,7 +28,9 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         if(loanApplication.getLoanAmount() <= maximumEligibleLoaAmount) {
             loanApplication.setLoanStatus("Approved");
             loanApplicationRepository.save(loanApplication);
-            double EMI = ((loanApplication.getLoanAmount() * 0.12/12 * Math.pow((1 + LoanApplicationConstants.RATE_OF_INTEREST/12) ,loanApplication.getLoanTenure()*12)) / (Math.pow((1 + LoanApplicationConstants.RATE_OF_INTEREST/12), (loanApplication.getLoanTenure()*12)) -1));
+            double mRate = LoanApplicationConstants.RATE_OF_INTEREST/12/100;
+            double term = Math.pow((1+mRate), loanApplication.getLoanTenure()*12);
+            double EMI = ((loanApplication.getLoanAmount() * mRate * term)/(term-1));
             return "Your loan application has been sanctioned with the EMI : " + EMI;
         }
 
