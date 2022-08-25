@@ -78,11 +78,11 @@ public class SavingAccount implements Serializable{
     }
    
 
-    public User getApplicantEMail() {
+    public String getApplicantEMail() {
         return applicantEmail;
     }
 
-    public void setApplicantEMail(User applicantEmail) {
+    public void setApplicantEMail(String applicantEmail) {
         this.applicantEmail = applicantEmail;
     }
 
