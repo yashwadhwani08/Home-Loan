@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,12 +26,12 @@ public class LoanRepaymentScheduleController {
 	}
 
 	@GetMapping("/get-loan-schedule/{loanid}")
-	public List <LoanRepaymentSchedule> getSchedule(@RequestParam int loanid) {
+	public List <LoanRepaymentSchedule> getSchedule(@PathVariable("loanid") int loanid) {
 		return lrs.getSchedule(loanid);
 	}
 
 	@PutMapping("update-loan-schedule/{loanid}")
-	public LoanRepaymentSchedule updateLoanSchedule(@RequestParam int loanid) {
+	public LoanRepaymentSchedule updateLoanSchedule(@PathVariable("loanid") int loanid) {
 		return lrs.updateLoanSchedule(loanid);
 	}
 }
