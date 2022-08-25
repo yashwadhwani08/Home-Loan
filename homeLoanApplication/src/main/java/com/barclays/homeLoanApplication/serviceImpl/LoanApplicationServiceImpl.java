@@ -19,7 +19,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     public String saveLoanApplication(LoanApplication loanApplication) {
         double maximumEligibleLoaAmount = (double) (loanApplication.getApplicantMonthlySalary() * 50);
 
-        if(loanApplication.getLoanTenure() < LoanApplicationConstants.MAXIMUM_LOAN_TENURE || loanApplication.getLoanTenure() > LoanApplicationConstants.MAXIMUM_LOAN_TENURE) {
+        if(loanApplication.getLoanTenure() < LoanApplicationConstants.MINIMUM_LOAN_TENURE || loanApplication.getLoanTenure() > LoanApplicationConstants.MAXIMUM_LOAN_TENURE) {
             loanApplication.setLoanStatus("Cancelled");
             loanApplicationRepository.save(loanApplication);
             return "Loan Application is cancelled as the loan tenure must be between " + LoanApplicationConstants.MINIMUM_LOAN_TENURE + " years to " + LoanApplicationConstants.MAXIMUM_LOAN_TENURE + " years.";
