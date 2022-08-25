@@ -56,7 +56,7 @@ public class LoanApplication {
 	    calendar.setTime(timestamp);
 	    int month = calendar.get(Calendar.MONTH);
 	    month++;
-	    System.out.println(month);
+//	    System.out.println(month);
 	    setMonth(month);
 	   }
 

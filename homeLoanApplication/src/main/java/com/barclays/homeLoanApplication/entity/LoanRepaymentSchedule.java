@@ -15,6 +15,7 @@ public class LoanRepaymentSchedule {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int paymentid;
 	
+	@Column(name="loanid")
 	private int loanid;
 
 	@Column(name="Date")

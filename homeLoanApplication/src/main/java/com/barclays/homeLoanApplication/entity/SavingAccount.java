@@ -1,19 +1,27 @@
 package com.barclays.homeLoanApplication.entity;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "SavingAccount")
-public class SavingAccount {
+public class SavingAccount implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long savingAccountNumber;
-
-    @Column()
-    private String sequenceId;
+    private long sequenceId;
 
     @Column
-    private String applicantEMail;
+    private long savingAccountNumber;
+
+    @Column
+    private String applicantEmail;
 
     @Column
     private double accountBalance;
@@ -21,30 +29,61 @@ public class SavingAccount {
     public SavingAccount() {
     }
 
-    public SavingAccount(String sequenceId, String applicantEMail, double accountBalance) {
-        this.sequenceId = sequenceId;
-        this.applicantEMail = applicantEMail;
-        this.accountBalance = accountBalance;
-    }
+    
 
-    public long getSavingAccountNumber() {
+    public String getApplicantEmail() {
+		return applicantEmail;
+	}
+
+
+
+	public void setApplicantEmail(String applicantEmail) {
+		this.applicantEmail = applicantEmail;
+	}
+
+
+
+	public void setSequenceId(long sequenceId) {
+		this.sequenceId = sequenceId;
+	}
+
+
+
+	public void setSavingAccountNumber(long savingAccountNumber) {
+		this.savingAccountNumber = savingAccountNumber;
+	}
+
+
+
+	
+
+
+
+	public SavingAccount(long sequenceId, long savingAccountNumber, String applicantEmail, double accountBalance) {
+		super();
+		this.sequenceId = sequenceId;
+		this.savingAccountNumber = savingAccountNumber;
+		this.applicantEmail = applicantEmail;
+		this.accountBalance = accountBalance;
+	}
+
+
+
+	public long getSavingAccountNumber() {
         return savingAccountNumber;
     }
 
-    public String getSequenceId() {
+    public long getSequenceId() {
         return sequenceId;
     }
+   
 
-    public void setSequenceId(String sequenceId) {
-        this.sequenceId = sequenceId;
+    public User getApplicantEMail() {
+        return applicantEmail;
     }
 
-    public String getApplicantEMail() {
-        return applicantEMail;
-    }
-
-    public void setApplicantEMail(String applicantEMail) {
-        this.applicantEMail = applicantEMail;
+    public void setApplicantEMail(User applicantEmail) {
+        this.applicantEmail = applicantEmail;
     }
 
     public double getAccountBalance() {
@@ -60,7 +99,7 @@ public class SavingAccount {
         return "SavingAccount{" +
                 "savingAccountNumber=" + savingAccountNumber +
                 ", sequenceId='" + sequenceId + '\'' +
-                ", applicantEMail='" + applicantEMail + '\'' +
+                ", applicantEmail='" + applicantEmail + '\'' +
                 ", accountBalance=" + accountBalance +
                 '}';
     }

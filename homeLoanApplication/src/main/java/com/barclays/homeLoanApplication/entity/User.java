@@ -1,16 +1,23 @@
 package com.barclays.homeLoanApplication.entity;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
 
     @Column
-    private String userEMail;
+    private String userEmail;
 
     @Column
     private String name;
@@ -21,8 +28,8 @@ public class User {
     public User() {
     }
 
-    public User(String userEMail, String name, String password) {
-        this.userEMail = userEMail;
+    public User(String userEmail, String name, String password) {
+        this.userEmail = userEmail;
         this.name = name;
         this.password = password;
     }
@@ -31,12 +38,12 @@ public class User {
         return userId;
     }
 
-    public String getUserEMail() {
-        return userEMail;
+    public String getuserEmail() {
+        return userEmail;
     }
 
-    public void setUserEMail(String userEMail) {
-        this.userEMail = userEMail;
+    public void setuserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getName() {
@@ -59,7 +66,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", userEMail='" + userEMail + '\'' +
+                ", userEmail='" + userEmail + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }
